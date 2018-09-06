@@ -1,0 +1,11 @@
+server:
+  port: 8098
+  
+spring:
+  application:
+    name: ots_send_batch
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
