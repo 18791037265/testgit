@@ -40,7 +40,25 @@ public class SendAndReceive {
 		String request = null;
 		String response = null;
 		try {
-			String str = vt.getStr("${send}");
+			String str = vt.getStr("${决策引擎名称}");
+			request = JSON.toJSONString(str);
+			logger.info("获取发送信息成功:[" + request + "]");
+		} catch (Exception e) {
+			logger.error("获取发送信息失败",e);
+		}
+		logger.info("============="+mn+"===============");
+		response = mn.send(request);
+		logger.info("调用数据源返回:[" + response + "]");
+		return response;
+	}
+	
+	public String sendMoNiFXQ2(VTools vt) {
+		Map<String,Object> map = (Map<String, Object>) vt.getObjMap("autoMap");
+		MoNiFXQ mn = (MoNiFXQ) map.get("mn");
+		String request = null;
+		String response = null;
+		try {
+			String str = vt.getStr("${决策引擎名称}");
 			request = JSON.toJSONString(str);
 			logger.info("获取发送信息成功:[" + request + "]");
 		} catch (Exception e) {

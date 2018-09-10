@@ -49,7 +49,7 @@ public class TimeOutRetry {
 		if(firstFlag){
 			vt.setValue("XiaCiZhiXingShiJian", addDateMinute(vt.getDate("yyyy-MM-dd HH:mm:ss"), Integer.parseInt(reTryStr.split(",")[0])) );
 			vt.run("${InsertTime}=123123");
-			vt.run("${pre_pact_no}="+vt.getStr("${m.pre_pact_no}"));
+			vt.run("${pre_pact_no}=" + vt.getStr("${m.pre_pact_no}"));
 			vt.run("${XiangMuBianHao}="+vt.getStr("${m.prdt_no}"));
 			vt.run("TAB_INS(ChaoShiZhongFa[id]{ZhuLiuChengBuZhou:决策引擎名称,DangQianCiShu:'1',ZhuangTai:'1',BeiZhu:'zfjk1超时',UpdateTime:myTime})");
 		}else{
@@ -100,7 +100,7 @@ public class TimeOutRetry {
 	 */
 	public void setTimeOut(VTools vt) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
 		logger.info(" "+vt.getStr("决策引擎名称")+"超时单号 =["+ vt.getStr("${m.pre_pact_no}")+"]");
-		vt.setValue("XiaCiZhiXingShiJian", addDateMinute(vt.getDate("yyyy-MM-dd HH:mm:ss"),360));
+		vt.setValue("XiaCiZhiXingShiJian",addDateMinute(vt.getDate("yyyy-MM-dd HH:mm:ss"),360));
 		vt.setValue("ZongCiShu", "3");
 		
 		vt.run("SQL(select * from ChaoShiZhongFa where pre_pact_no='${m.pre_pact_no}'");
@@ -109,11 +109,9 @@ public class TimeOutRetry {
 			logger.info("-"+vt.getStr("决策引擎名称")+"-第一次进入超时-----------");
 			vt.run("${DangQianShuJu}="+vt.getStr("${m.pre_pact_no}"));
 			vt.run("TAB_INS(ChaoShiZhongFa[id]{XiangMuBianHao:proj_no,DangQianCiShu:'1',ZhiXingShiJian:newDate,ZhuangTai:'1',BeiZhu:'999999',InsertTime:myTime,UpdateTime:myTime})");
-			
 		}else{
 			// 修改下次执行时间
 			vt.run("SQL(update ChaoShiZhongFa set ZhuangTai = '1' where pre_pact_no='${m.pre_pact_no}'");
-			
 		}
 	}
 }
