@@ -87,7 +87,7 @@ public class TimeOutRetry {
        } 
 	
 	/**
-	 * 设置反洗钱和反欺诈超时重发表     XiaCiZhiXingShiJian='"+addDateMinute(vt.getDate("yyyy-MM-dd HH:mm:ss"),)
+	 *  设置反洗钱和反欺诈超时重发表     XiaCiZhiXingShiJian='"+addDateMinute(vt.getDate("yyyy-MM-dd HH:mm:ss"),)
 	 * @param vt  变量
 	 * @param fMap 主流程表查询出来的
 	 * @param firstFlag  是否第一次登记
